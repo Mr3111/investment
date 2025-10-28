@@ -7,6 +7,7 @@ const userRouter = require('./routes/userRoute.js');
 const foodRouter = require('./routes/foodRoute.js');
 const cartRouter = require('./routes/cartRoute.js');
 const orderRouter = require('./routes/orderRoute.js');
+const errorHandler = require('./middleware/errorHandler.js');
 
 // app config
 const app = express();
@@ -29,6 +30,8 @@ app.use('/api/order', orderRouter);
 app.get("/", (req, res) => {
     res.send("API working");
 });
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
